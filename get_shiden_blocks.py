@@ -12,7 +12,6 @@ bashCommand = """
                   }'
               """
 
-
 result_raw = subprocess.run(
     bashCommand,
     check=True,
