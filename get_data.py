@@ -18,17 +18,26 @@ import io
 #                   --header 'Content-Type: application/json'
 #               """
 
-# "row": 10,
-#                     "page": 955378
-block_num = 3
-bashCommand = """
-                curl -X POST 'https://polkadot.api.subscan.io/api/scan/block' \
-                  --header 'Content-Type: application/json' \
-                  --header 'X-API-Key: YOUR_KEY' \
-                  --data-raw '{
-                    "block_num": """ + str(block_num) + """
-                  }'
-              """
+
+# block_num = 3
+# bashCommand = """
+#                 curl -X POST 'https://polkadot.api.subscan.io/api/scan/block' \
+#                   --header 'Content-Type: application/json' \
+#                   --header 'X-API-Key: YOUR_KEY' \
+#                   --data-raw '{
+#                     "block_num": """ + str(block_num) + """
+#                   }'
+#               """
+
+# bashCommand = """
+#                 curl -X POST 'https://polkadot.api.subscan.io/api/scan/blocks' \
+#                   --header 'Content-Type: application/json' \
+#                   --header 'X-API-Key: YOUR_KEY' \
+#                   --data-raw '{
+#                         "row": 10,
+#                         "page": 0
+#                   }'
+#               """
 
 # bashCommand = """
 #                 curl -X POST 'https://polkadot.api.subscan.io/api/scan/extrinsics' \
@@ -36,18 +45,18 @@ bashCommand = """
 #                   --header 'X-API-Key: YOUR_KEY' \
 #                   --data-raw '{
 #                     "row": 1,
-#                     "page": 1
+#                     "page": 0
 #                   }'
 #               """
 
-# bashCommand = """
-#                 curl -X POST 'https://polkadot.api.subscan.io/api/scan/extrinsic' \
-#                   --header 'Content-Type: application/json' \
-#                   --header 'X-API-Key: YOUR_KEY' \
-#                   --data-raw '{
-#                     "extrinsic_index": "2028659-2"
-#                   }'
-#               """
+bashCommand = """
+                curl -X POST 'https://polkadot.api.subscan.io/api/scan/extrinsic' \
+                  --header 'Content-Type: application/json' \
+                  --header 'X-API-Key: YOUR_KEY' \
+                  --data-raw '{
+                    "extrinsic_index": "2028659-2"
+                  }'
+              """
 
 # bashCommand = """
 #                 curl -X POST 'https://polkadot.api.subscan.io/api/scan/events' \
@@ -141,4 +150,5 @@ result = subprocess.run(
 )
 result = result.stdout
 result = json.loads(result)
-pprint(result)
+# pprint(result['data']['block_num'])
+pprint(result['data'])
